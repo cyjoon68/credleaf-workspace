@@ -1,12 +1,17 @@
-# credleaf-workspace
+# CredLeaf
 
-Root workspace for CredLeaf. Child repos are managed as git submodules.
+CredLeaf is a credential issuance and verification platform for managing credential templates, issued credentials, public verification, revocation, and audit logs.
 
 ```text
 credleaf-workspace/
   credleaf-fe/
   credleaf-be/
 ```
+
+## Services
+
+- `credleaf-fe`: issuer console and public verification UI.
+- `credleaf-be`: credential lifecycle API and audit log storage.
 
 ## Run
 
@@ -15,11 +20,17 @@ git submodule update --init --recursive
 docker compose up --build
 ```
 
-## Resume evidence
+## Core Flow
 
-- DID credential lifecycle: issue, verify, revoke, audit log.
-- Audit bottleneck fix: `GET /api/audit-logs?cursor=&limit=` plus `audit_log(created_at desc, id)` and `target_id` indexes.
-- Frontend: Next.js App Router, React Compiler, TypeScript, ky.
-- Backend: Java 21, Spring Boot MVC, PostgreSQL schema, Flyway migration.
-- Infra: Docker Compose, Terraform skeleton, Kubernetes manifest, Argo CD GitOps app.
-- CI: FE lint/build, BE Gradle test.
+- Create credential templates.
+- Issue credentials from templates.
+- Verify credential status through a public page.
+- Revoke issued credentials.
+- Track status changes through audit logs.
+
+## Operations
+
+- Audit logs support cursor pagination through `GET /api/audit-logs?cursor=&limit=`.
+- PostgreSQL indexes support audit log ordering and target lookup.
+- Docker Compose runs the local stack.
+- Terraform, Kubernetes, and Argo CD manifests describe deployment structure.
