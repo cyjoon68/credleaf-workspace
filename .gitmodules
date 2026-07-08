@@ -1,0 +1,8 @@
+[submodule "credleaf-fe"]
+	path = credleaf-fe
+	url = https://github.com/credleaf-labs/credleaf-fe.git
+	branch = develop
+[submodule "credleaf-be"]
+	path = credleaf-be
+	url = https://github.com/credleaf-labs/credleaf-be.git
+	branch = develop
