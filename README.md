@@ -20,4 +20,5 @@ docker compose up --build
 - DID credential lifecycle: issue, verify, revoke, audit log.
 - Frontend: Next.js App Router, React Compiler, TypeScript, ky.
 - Backend: Java 21, Spring Boot MVC, PostgreSQL schema, Flyway migration.
+- Infra: Docker Compose, Terraform skeleton, Kubernetes manifest, Argo CD GitOps app.
 - CI: FE lint/build, BE Gradle test.
