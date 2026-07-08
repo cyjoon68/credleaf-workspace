@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: credleaf
+      POSTGRES_USER: credleaf
+      POSTGRES_PASSWORD: credleaf
+    ports:
+      - "5432:5432"
+  be:
+    build: ./credleaf-be
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/credleaf
+      DATABASE_USERNAME: credleaf
+      DATABASE_PASSWORD: credleaf
+      FLYWAY_ENABLED: "true"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  fe:
+    build: ./credleaf-fe
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - be
